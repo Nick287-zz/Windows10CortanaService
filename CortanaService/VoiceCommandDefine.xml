@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="zh-cn" Name="AdventureWorksCommandSet_zh-cn">
+    <CommandPrefix>智能仓库</CommandPrefix>
+    <Example>显示伦敦之行</Example>
+
+    <Command Name="showTripToDestination">
+      <Example>显示办公室状况</Example>
+      <ListenFor>显示{condition}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">显示[我]{builtin:AppName}办公室{condition}</ListenFor>
+      <Feedback>显示{condition}时的状况</Feedback>
+      <Navigate Target="foo"/>
+    </Command>
+
+    <Command Name="Temperature">
+      <Example>北京库房情况怎么样？</Example>
+      <ListenFor>{condition}[仓库][库房][情况]怎么样</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">显示[我]{builtin:AppName}库房{condition}的状况</ListenFor>
+      <Feedback>查询{condition}的状况</Feedback>
+      <VoiceCommandService Target="CortanaVoiceCommandService"/>
+    </Command>
+
+    <Command Name="cancelTripToDestination">
+      <Example>取消我的拉斯维加斯之旅</Example>
+      <ListenFor>取消[我的]{condition}之旅</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">取消[我的]{builtin:AppName}{condition}之旅</ListenFor>
+      <Feedback>取消{condition}之行</Feedback>
+      <VoiceCommandService Target="CortanaVoiceCommandService"/>
+    </Command>
+
+    <PhraseList Label="condition">
+      <Item>北京</Item>
+      <Item>上海</Item>
+      <Item>lighton</Item>
+      <Item>lightoff</Item>
+      <Item>唐山</Item>
+      <Item>Las Vegas</Item>
+      <Item>Melbourne</Item>
+      <Item>Yosemite National Park</Item>
+    </PhraseList>
+  </CommandSet>
+</VoiceCommands>
